@@ -22,12 +22,12 @@
     "profiles": {
         "defaults": {
             // Put settings here that you want to apply to all profiles.
-            "colorScheme": "Desert",
+            "colorScheme": "Tango Dark",
             "useAcrylic": true,
             "acrylicOpacity": 0.75,
             "cursorShape": "bar",
-            "fontFace": "",
-            "fontSize": 11
+            "fontFace": "Cascadia Code",
+            "fontSize": 10
         },
         "list": [
             {
@@ -35,7 +35,7 @@
                 "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
                 "name": "Windows PowerShell",
                 "commandline": "powershell.exe",
-                "hidden": false
+                "hidden": true
             },
             {
                 // Make changes here to the cmd.exe profile.
@@ -46,15 +46,24 @@
             },
             {
                 "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
-                "hidden": false,
+                "hidden": true,
                 "name": "Azure Cloud Shell",
                 "source": "Windows.Terminal.Azure"
             },
             {
                 "guid": "{07b52e3e-de2c-5db4-bd2d-ba144ed6c273}",
                 "hidden": false,
-                "name": "EVA",
-                "source": "Windows.Terminal.Wsl"
+                "name": "Ubuntu 20.04",
+                "source": "Windows.Terminal.Wsl",
+                "icon": "D:/Code/scripts/icons/ubuntu_32.ico",
+                "startingDirectory": "//wsl$/Ubuntu-20.04/home/ffiirree" // ~
+            },
+            {
+                "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6102}",
+                "hidden": false,
+                "name": "Git Bash",
+                "commandline": "C:/Program Files/Git/bin/bash.exe",
+                "icon": "D:/Code/scripts/icons/git.ico"
             }
         ]
     },
@@ -249,6 +258,27 @@
             "brightWhite": "#ffffff",
             "background": "#2b2b2b",
             "foreground": "#e6e1dc"
+        },
+        {
+            "name": "Tango Dark",
+            "black": "#000000",
+            "red": "#cc0000",
+            "green": "#4e9a06",
+            "yellow": "#c4a000",
+            "blue": "#3465a4",
+            "purple": "#75507b",
+            "cyan": "#06989a",
+            "white": "#d3d7cf",
+            "brightBlack": "#555753",
+            "brightRed": "#ef2929",
+            "brightGreen": "#8ae234",
+            "brightYellow": "#fce94f",
+            "brightBlue": "#729fcf",
+            "brightPurple": "#ad7fa8",
+            "brightCyan": "#34e2e2",
+            "brightWhite": "#eeeeec",
+            "background": "#000000",
+            "foreground": "#D3D7CF"
         }
     ],
     // Add custom keybindings to this array.
