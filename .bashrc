@@ -116,8 +116,11 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# ffiirree 20200201
-alias code="/mnt/c/Users/ffiirree/AppData/Local/Programs/Microsoft\ VS\ Code/bin/code"
+# custom
+
+# code
+# alias code="/mnt/c/Users/ffiirree/AppData/Local/Programs/Microsoft\ VS\ Code/bin/code"
+# or add the code path to 'PATH'
 
 export WIN_IP=$(cat /etc/resolv.conf | grep 'nameserver' | cut -f 2 -d ' ')
 export WSL_IP=$(ip addr show eth0 | grep 'inet ' | cut -f 6 -d ' ' | cut -f 1 -d '/')
@@ -125,16 +128,8 @@ export WSL_IP=$(ip addr show eth0 | grep 'inet ' | cut -f 6 -d ' ' | cut -f 1 -d
 echo WIN_IP: $WIN_IP
 echo WSL_IP: $WSL_IP
 
-alias link249='ssh -p 34991 zhliangqi@222.20.95.224'
+alias ssh249='ssh -p 34991 zhliangqi@222.20.95.224'
 
-if [ ! -L /home/ffiirree/desktop ]; then
-    ln -s /mnt/c/Users/ffiirree/Desktop/ ~/desktop
-fi
-
-if [ ! -L /home/ffiirree/download ]; then
-    ln -s /mnt/c/Users/ffiirree/Downloads/ ~/download
-fi
-
-if [ ! -L /home/ffiirree/code ]; then
-    ln -s /mnt/d/Code ~/code
-fi
+[ ! -L /home/ffiirree/desktop ] && ln -s /mnt/c/Users/ffiirree/Desktop/ ~/desktop
+[ ! -L /home/ffiirree/download ] && ln -s /mnt/c/Users/ffiirree/Downloads/ ~/download
+[ ! -L /home/ffiirree/code ] && ln -s /mnt/d/Code ~/code
