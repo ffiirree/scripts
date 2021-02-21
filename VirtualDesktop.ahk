@@ -1,6 +1,6 @@
 ﻿; Globals
-DesktopCount = 3 ; Windows starts with 2 desktops at boot
-CurrentDesktop = 2 ; Desktop count is 1-indexed (Microsoft numbers them this way)
+DesktopCount := 3 ; Windows starts with 2 desktops at boot
+CurrentDesktop := 2 ; Desktop count is 1-indexed (Microsoft numbers them this way)
 ;
 ; This function examines the registry to build an accurate list of the current virtual desktops and which one we're currently on.
 ; Current desktop UUID appears to be in HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\SessionInfo\1\VirtualDesktops
@@ -50,14 +50,14 @@ getSessionId()
 {
     ProcessId := DllCall("GetCurrentProcessId", "UInt")
     if ErrorLevel {
-    OutputDebug, Error getting current process id: %ErrorLevel%
-    return
+        OutputDebug, Error getting current process id: %ErrorLevel%
+        return
     }
     OutputDebug, Current Process Id: %ProcessId%
     DllCall("ProcessIdToSessionId", "UInt", ProcessId, "UInt*", SessionId)
     if ErrorLevel {
-    OutputDebug, Error getting session id: %ErrorLevel%
-    return
+        OutputDebug, Error getting session id: %ErrorLevel%
+        return
     }
     OutputDebug, Current Session Id: %SessionId%
     return SessionId
@@ -158,8 +158,8 @@ LWin & 9::switchDesktopByNumber(9)
 ;^!c::createVirtualDesktop()
 ;^!d::deleteVirtualDesktop()
 
-WheelLeft::switchDesktopByNumber(CurrentDesktop - 1)
-WheelRight::switchDesktopByNumber(CurrentDesktop + 1)
+WheelLeft::switchDesktopByNumber(CurrentDesktop + 1)
+WheelRight::switchDesktopByNumber(CurrentDesktop - 1)
 
 ; Run windows terminal
 ^!t::Run wt
