@@ -17,4 +17,8 @@ plugins=( [plugins...] zsh-syntax-highlighting)
 
 ## AutoHotkey
 
-- [x] Virtual desktop
+- [x] Virtual desktops
+
+### Run on startup
+
+Copy `.ahk` files to `C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp`
