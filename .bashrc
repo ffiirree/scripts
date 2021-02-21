@@ -126,3 +126,15 @@ echo WIN_IP: $WIN_IP
 echo WSL_IP: $WSL_IP
 
 alias link249='ssh -p 34991 zhliangqi@222.20.95.224'
+
+if [ ! -L /home/ffiirree/desktop ]; then
+    ln -s /mnt/c/Users/ffiirree/Desktop/ ~/desktop
+fi
+
+if [ ! -L /home/ffiirree/download ]; then
+    ln -s /mnt/c/Users/ffiirree/Downloads/ ~/download
+fi
+
+if [ ! -L /home/ffiirree/code ]; then
+    ln -s /mnt/d/Code ~/code
+fi
