@@ -1,6 +1,6 @@
 ﻿; Globals
-DesktopCount = 2 ; Windows starts with 2 desktops at boot
-CurrentDesktop = 1 ; Desktop count is 1-indexed (Microsoft numbers them this way)
+DesktopCount = 3 ; Windows starts with 2 desktops at boot
+CurrentDesktop = 2 ; Desktop count is 1-indexed (Microsoft numbers them this way)
 ;
 ; This function examines the registry to build an accurate list of the current virtual desktops and which one we're currently on.
 ; Current desktop UUID appears to be in HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\SessionInfo\1\VirtualDesktops
@@ -157,3 +157,9 @@ LWin & 9::switchDesktopByNumber(9)
 ;^!a::switchDesktopByNumber(CurrentDesktop - 1)
 ;^!c::createVirtualDesktop()
 ;^!d::deleteVirtualDesktop()
+
+WheelLeft::switchDesktopByNumber(CurrentDesktop + 1)
+WheelRight::switchDesktopByNumber(CurrentDesktop - 1)
+
+; Run windows terminal
+^!t::Run wt
