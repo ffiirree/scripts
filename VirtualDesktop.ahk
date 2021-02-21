@@ -158,8 +158,8 @@ LWin & 9::switchDesktopByNumber(9)
 ;^!c::createVirtualDesktop()
 ;^!d::deleteVirtualDesktop()
 
-WheelLeft::switchDesktopByNumber(CurrentDesktop + 1)
-WheelRight::switchDesktopByNumber(CurrentDesktop - 1)
+WheelLeft::switchDesktopByNumber(CurrentDesktop - 1)
+WheelRight::switchDesktopByNumber(CurrentDesktop + 1)
 
 ; Run windows terminal
 ^!t::Run wt
