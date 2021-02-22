@@ -110,7 +110,7 @@ class VirtualDesktopManager {
         Send, #^d
         this.count++
         this.index := this.count
-        LOG(INFO, A_LineNumber, Format("Create a virtual desktop: ", this.index))
+        LOG(INFO, A_LineNumber, Format("Create a virtual desktop: {}", this.index))
     }
 
     ; delete the current virtual desktop
@@ -119,7 +119,7 @@ class VirtualDesktopManager {
         Send, #^{F4}
         this.count--
         this.index--
-        LOG(INFO, A_LineNumber, Format("Remove a virtual desktop: ", this.index + 1))
+        LOG(INFO, A_LineNumber, Format("Remove a virtual desktop: {}", this.index + 1))
     }
 
     __read_reg(key, name) 
