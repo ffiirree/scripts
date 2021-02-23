@@ -64,7 +64,7 @@ class VirtualDesktopManager {
 
         ; Parse the REG_DATA string that stores the array of UUID's for virtual desktops in the registry.
         while (this.current_id and A_Index < this.count) {
-            if (SubStr(DesktopList, ((A_Index - 1) * this.id_length) + 1, this.id_length) = this.current_id) {
+            if (SubStr(all_ids, ((A_Index - 1) * this.id_length) + 1, this.id_length) = this.current_id) {
                 this.index := A_Index
                 break
             }
@@ -160,6 +160,43 @@ LWin & 9::manager.slide(9)
 
 ^WheelLeft:: manager.slide(Mod(manager.index, manager.count) + 1)
 ^WheelRight::manager.slide(Mod(manager.index - 2 + manager.count, manager.count) + 1)
+
+RButton::
+    MIN_DIS := 160
+
+    MouseGetPos, x_s, y_s
+    KeyWait, RButton, U
+    MouseGetPos, x_e, y_e
+
+    if((x_s - x_e > MIN_DIS) and (Abs(y_s - y_e) < (MIN_DIS / 2))) {
+        LOG(INFO, A_LineNumber, "LEFT")
+        manager.slide(manager.index + 1)
+    }
+    else if((x_e - x_s > MIN_DIS) and (Abs(y_s - y_e) < (MIN_DIS / 2))) {
+        LOG(INFO, A_LineNumber, "RIGHT")
+        manager.slide(manager.index - 1)
+    }
+    else if(Abs(x_s - x_e) < (MIN_DIS / 2) and (y_s - y_e > MIN_DIS)) {
+        LOG(INFO, A_LineNumber, "UP")
+
+        If !WinActive("Task View")  {
+            Send, #{Tab}
+        }
+    }
+    else if(Abs(x_s - x_e) < (MIN_DIS / 2) and (y_e - y_s > MIN_DIS)) {
+        LOG(INFO, A_LineNumber, "DOWN")
+
+        If WinActive("Task View") {
+            Send, #{Tab} 
+        }
+        else { 
+            Send, #d
+        }
+    }
+    else {
+        SendInput, {RButton}
+    }
+Return
 
 ; Run windows terminal
 ^!t::Run wt
