@@ -31,8 +31,7 @@ Keys | Actions
 `Ctrl` + `G`            | `Google` the selection.
 `Ctrl` + `Alt` + `C`    | `Copy` the file path.
 
-
-
 ### Run on startup
 
-Copy `.ahk` files to `C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp`
+1. `Win` + `R` and input `shell:startup`, then, `Enter`.
+2. Copy `.ahk` file to this folder.
