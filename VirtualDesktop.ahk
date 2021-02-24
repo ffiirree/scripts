@@ -5,8 +5,6 @@
 ;====================================================================o
 global INFO := "INFO", DEBUG := "DEBUG", WARN := "WARN", ERROR := "ERROR", FATAL := "FATAL"
 LOG(Level, Line, Str) {
-    if(Level = FATAL)
-        MsgBox, , Error, %Str%, 1
     OutputDebug, %A_YYYY%-%A_MM%-%A_DD% %A_Hour%:%A_Min%:%A_Sec%:%A_MSec% %Level% %A_ScriptName%:%Line%] %Str%
 }
 
@@ -157,7 +155,7 @@ class VirtualDesktopManager {
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-global DESKTOP := "Desktop", TASK_VIEW := "Task View"
+global DESKTOP := "Desktop", TASK_VIEW := "Task View", pre_action := ""
 SetKeyDelay, 50
 
 ;====================================================================o
@@ -210,11 +208,15 @@ RButton::
         LOG(INFO, A_LineNumber, "Gesture: U")
 
         WinGetActiveTitle, active_title
-        if(active_title != "" && active_title != TASK_VIEW) {
-            Send, #{Tab}
-        }
-        else if(active_title = "") {
-            Send, #d
+        if(active_title != TASK_VIEW) {
+            if(pre_action != DESKTOP) {
+                Send, #{Tab}
+                pre_action := TASK_VIEW
+            }
+            else {
+                Send, #d
+                pre_action := ""
+            }
         }
     }
     else if(Abs(x_s - x_e) < (MIN_DIS / 2) && (y_e - y_s > MIN_DIS)) {
@@ -223,9 +225,11 @@ RButton::
         WinGetActiveTitle, active_title
         if(active_title = TASK_VIEW) {
             Send, #{Tab}
+            pre_action := ""
         }
-        else if(active_title != "") {
+        else if((active_title != "") || (pre_action != DESKTOP)) {
             Send, #d
+            pre_action := DESKTOP
         }
     }
     else {
