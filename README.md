@@ -17,11 +17,21 @@ plugins=( [plugins...] zsh-syntax-highlighting)
 ```
 
 ## AutoHotkey
+Keys | Actions
+:-:|---
+`Win` + `1`, `2`, ...|**Switch** to virtual desktop **1, 2, etc**.
+`Ctrl` + `WheelLeft` / `WheelRight`   | **Switch** to the virtual desktop on the **left / right**.
+`RButton` slides left  / right   | **Switch** to the virtual desktop on the **left / right**.
+`RButton` slides up     | **Show task view**.
+`RButton` slides down   | **Show desktop**.
+`Ctrl` + `Alt` + `T`    | **Run** windows terminal.
+`LButton` + `RButton`   | `AltTab`.
+`Ctrl` + `Up` / `Down`  | **Volume Up / Down**.
+`WheelDown` / `WheelDown` when cursor is in the taskbar | **Volume Up / Down**.
+`Ctrl` + `G`            | `Google` the selection.
+`Ctrl` + `Alt` + `C`    | `Copy` the file path.
 
-- [x] Switch virtual desktops.
-- [x] Control volume.
-- [x] Google the selection.
-- [x] Copy the file path.
+
 
 ### Run on startup
 
