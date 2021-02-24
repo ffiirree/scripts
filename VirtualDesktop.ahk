@@ -2,6 +2,8 @@
 ; log
 global INFO := "INFO", DEBUG := "DEBUG", WARN := "WARN", ERROR := "ERROR", FATAL := "FATAL"
 LOG(Level, Line, Str) {
+    if(Level = FATAL)
+        MsgBox, , Error, %Str%, 1
     OutputDebug, %A_YYYY%-%A_MM%-%A_DD% %A_Hour%:%A_Min%:%A_Sec%:%A_MSec% %Level% %A_ScriptName%:%Line%] %Str%
 }
 
@@ -91,17 +93,31 @@ class VirtualDesktopManager {
 
         ; Go right until we reach the desktop we want
         while(this.index < idx) {
-            Send ^#{Right}
-            this.index++
+            this.slide_right()
             LOG(INFO, A_LineNumber, Format("[R] Target index: {}, current index: {}", idx, this.index))
         }
 
         ; Go left until we reach the desktop we want
         while(this.index > idx) {
-            Send ^#{Left}
-            this.index--
+            this.slide_left()
             LOG(INFO, A_LineNumber, Format("[L] Target index: {}, current index: {}", idx, this.index))
         }
+    }
+
+    slide_left() 
+    {
+        Send ^#{Left}
+
+        if(this.index > 1) 
+            this.index--
+    }
+
+    slide_right()
+    {
+        Send ^#{Right}
+
+        if(this.index < this.count) 
+            this.index++
     }
 
     ; create a new virtual desktop and switches to it
@@ -126,7 +142,7 @@ class VirtualDesktopManager {
     {
         RegRead, value, %key%, %name%
         if ErrorLevel {
-            LOG(ERROR, A_LineNumber, Format("RegRead: {}", ErrorLevel))
+            LOG(FATAL, A_LineNumber, Format("RegRead<{}, {}>: {}", key, name, ErrorLevel))
             return
         }
 
@@ -158,8 +174,8 @@ LWin & 7::manager.slide(7)
 LWin & 8::manager.slide(8)
 LWin & 9::manager.slide(9)
 
-^WheelLeft:: manager.slide(Mod(manager.index, manager.count) + 1)
-^WheelRight::manager.slide(Mod(manager.index - 2 + manager.count, manager.count) + 1)
+^WheelLeft:: manager.slide_left()
+^WheelRight::manager.slide_right()
 
 RButton::
     MIN_DIS := 160
@@ -169,22 +185,22 @@ RButton::
     MouseGetPos, x_e, y_e
 
     if((x_s - x_e > MIN_DIS) and (Abs(y_s - y_e) < (MIN_DIS / 2))) {
-        LOG(INFO, A_LineNumber, "LEFT")
-        manager.slide(manager.index + 1)
+        LOG(INFO, A_LineNumber, "Gesture: L")
+        manager.slide_right()
     }
     else if((x_e - x_s > MIN_DIS) and (Abs(y_s - y_e) < (MIN_DIS / 2))) {
-        LOG(INFO, A_LineNumber, "RIGHT")
-        manager.slide(manager.index - 1)
+        LOG(INFO, A_LineNumber, "Gesture: R")
+        manager.slide_left()
     }
     else if(Abs(x_s - x_e) < (MIN_DIS / 2) and (y_s - y_e > MIN_DIS)) {
-        LOG(INFO, A_LineNumber, "UP")
+        LOG(INFO, A_LineNumber, "Gesture: U")
 
         If !WinActive("Task View")  {
             Send, #{Tab}
         }
     }
     else if(Abs(x_s - x_e) < (MIN_DIS / 2) and (y_e - y_s > MIN_DIS)) {
-        LOG(INFO, A_LineNumber, "DOWN")
+        LOG(INFO, A_LineNumber, "Gesture: D")
 
         If WinActive("Task View") {
             Send, #{Tab} 
