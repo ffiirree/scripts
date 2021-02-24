@@ -1,5 +1,8 @@
-﻿;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; log
+﻿;====================================================================o
+;                                                                    ;
+; Log.                                                               ;
+;                                                                    ;
+;====================================================================o
 global INFO := "INFO", DEBUG := "DEBUG", WARN := "WARN", ERROR := "ERROR", FATAL := "FATAL"
 LOG(Level, Line, Str) {
     if(Level = FATAL)
@@ -12,8 +15,11 @@ LOG_BLANK_LINE() {
     OutputDebug, %blank%
 }
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; class VirtualDesktopManager
+;====================================================================o
+;                                                                    ;
+; Manage the virtual desktops.                                       ;
+;                                                                    ;
+;====================================================================o
 class VirtualDesktopManager {
     ; Get the current desktop UUID. Length should be 32 always, 
     ; but there's no guarantee this couldn't change in a later Windows release so we check.
@@ -152,8 +158,13 @@ class VirtualDesktopManager {
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 global DESKTOP := "Desktop", TASK_VIEW := "Task View"
-
 SetKeyDelay, 50
+
+;====================================================================o
+;                                                                    ;
+; Switch virtual desktops by hotkeys or mouse gesture.               ;
+;                                                                    ;
+;====================================================================o
 vd_manager := new VirtualDesktopManager()
 vd_manager.update()
 
@@ -222,5 +233,61 @@ RButton::
     }
 Return
 
-; Run windows terminal
+;====================================================================o
+;                                                                    ;
+; Run windows terminal.                                              ;
+;                                                                    ;
+;====================================================================o
 ^!t::Run wt
+
+;====================================================================o
+;                                                                    ;
+; AltTab                                                             ;
+;                                                                    ;
+;====================================================================o
+~LButton & RButton::AltTab
+
+;====================================================================o
+;                                                                    ;
+; Volume                                                             ;
+;                                                                    ;
+;====================================================================o
+~WheelUp::
+    MouseGetPos, , , current_win_id
+    WinGet, tray_id, ID, ahk_class Shell_TrayWnd
+    if(current_win_id = tray_id) {
+        Send {Volume_Up}
+    }
+Return
+
+~WheelDown::
+    MouseGetPos, , , current_win_id
+    WinGet, tray_id, ID, ahk_class Shell_TrayWnd
+    if(current_win_id = tray_id) {
+        Send {Volume_Down}
+    }
+Return
+
+^Up::Volume_Up
+^Down::Volume_Down
+
+;====================================================================o
+;                                                                    ;
+; Google                                                             ;
+;                                                                    ;
+;====================================================================o
+^g:: 
+    Send ^c 
+    Run https://www.google.com/search?q=%Clipboard%
+return 
+
+;====================================================================o
+;                                                                    ;
+; Copy file path.                                                    ;
+;                                                                    ;
+;====================================================================o
+^!c::
+    Send ^c
+    Sleep, 100
+    Clipboard = %Clipboard%
+return
