@@ -65,7 +65,7 @@ class VirtualDesktopManager {
         LOG(INFO, A_LineNumber, Format("The number of virtual desktop: {}", this.count))
 
         ; Parse the REG_DATA string that stores the array of UUID's for virtual desktops in the registry.
-        while (this.current_id and A_Index < this.count) {
+        while (this.current_id && (A_Index < this.count)) {
             if (SubStr(all_ids, ((A_Index - 1) * this.id_length) + 1, this.id_length) = this.current_id) {
                 this.index := A_Index
                 break
@@ -151,61 +151,69 @@ class VirtualDesktopManager {
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+global DESKTOP := "Desktop", TASK_VIEW := "Task View"
+
 SetKeyDelay, 50
-manager := new VirtualDesktopManager()
-manager.update()
+vd_manager := new VirtualDesktopManager()
+vd_manager.update()
 
 ; ; default
 ; default_count := 3, default_index := 2
-; while(manager.count != default_count) {
-;     manager.count > default_count ? manager.remove() : manager.create()
-;     manager.update()
+; while(vd_manager.count != default_count) {
+;     vd_manager.count > default_count ? vd_manager.remove() : vd_manager.create()
+;     vd_manager.update()
 ; }
-; manager.slide(default_index)
+; vd_manager.slide(default_index)
 
 ; User config!
-LWin & 1::manager.slide(1)
-LWin & 2::manager.slide(2)
-LWin & 3::manager.slide(3)
-LWin & 4::manager.slide(4)
-LWin & 5::manager.slide(5)
-LWin & 6::manager.slide(6)
-LWin & 7::manager.slide(7)
-LWin & 8::manager.slide(8)
-LWin & 9::manager.slide(9)
+LWin & 1::vd_manager.slide(1)
+LWin & 2::vd_manager.slide(2)
+LWin & 3::vd_manager.slide(3)
+LWin & 4::vd_manager.slide(4)
+LWin & 5::vd_manager.slide(5)
+LWin & 6::vd_manager.slide(6)
+LWin & 7::vd_manager.slide(7)
+LWin & 8::vd_manager.slide(8)
+LWin & 9::vd_manager.slide(9)
 
-^WheelLeft:: manager.slide_left()
-^WheelRight::manager.slide_right()
+^WheelLeft:: vd_manager.slide_left()
+^WheelRight::vd_manager.slide_right()
 
+; Gesture
 RButton::
-    MIN_DIS := 160
-
+    MIN_DIS := 145
+    
     MouseGetPos, x_s, y_s
     KeyWait, RButton, U
     MouseGetPos, x_e, y_e
 
-    if((x_s - x_e > MIN_DIS) and (Abs(y_s - y_e) < (MIN_DIS / 2))) {
+    if((x_s - x_e > MIN_DIS) && (Abs(y_s - y_e) < (MIN_DIS / 2))) {
         LOG(INFO, A_LineNumber, "Gesture: L")
-        manager.slide_right()
+        vd_manager.slide_right()
     }
-    else if((x_e - x_s > MIN_DIS) and (Abs(y_s - y_e) < (MIN_DIS / 2))) {
+    else if((x_e - x_s > MIN_DIS) && (Abs(y_s - y_e) < (MIN_DIS / 2))) {
         LOG(INFO, A_LineNumber, "Gesture: R")
-        manager.slide_left()
+        vd_manager.slide_left()
     }
-    else if(Abs(x_s - x_e) < (MIN_DIS / 2) and (y_s - y_e > MIN_DIS)) {
+    else if(Abs(x_s - x_e) < (MIN_DIS / 2) && (y_s - y_e > MIN_DIS)) {
         LOG(INFO, A_LineNumber, "Gesture: U")
 
-        If !WinActive("Task View")  {
+        WinGetActiveTitle, active_title
+        if(active_title != "" && active_title != TASK_VIEW) {
             Send, #{Tab}
         }
+        else if(active_title = "") {
+            Send, #d
+        }
     }
-    else if(Abs(x_s - x_e) < (MIN_DIS / 2) and (y_e - y_s > MIN_DIS)) {
+    else if(Abs(x_s - x_e) < (MIN_DIS / 2) && (y_e - y_s > MIN_DIS)) {
         LOG(INFO, A_LineNumber, "Gesture: D")
 
-        If WinActive("Task View") {
-            Send, #{Tab} 
+        WinGetActiveTitle, active_title
+        if(active_title = TASK_VIEW) {
+            Send, #{Tab}
         }
-        else { 
+        else if(active_title != "") {
             Send, #d
         }
     }
