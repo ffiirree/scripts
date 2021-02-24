@@ -27,7 +27,7 @@ Keys | Actions
 `Ctrl` + `Alt` + `T`    | **Run** windows terminal.
 `LButton` + `RButton`   | `AltTab`.
 `Ctrl` + `Up` / `Down`  | **Volume Up / Down**.
-`WheelDown` / `WheelDown` when cursor is in the taskbar | **Volume Up / Down**.
+`WheelUp` / `WheelDown` when cursor is in the taskbar | **Volume Up / Down**.
 `Ctrl` + `G`            | `Google` the selection.
 `Ctrl` + `Alt` + `C`    | `Copy` the file path.
 
