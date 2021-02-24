@@ -188,6 +188,9 @@ LWin & 9::vd_manager.slide(9)
 ^WheelLeft:: vd_manager.slide_left()
 ^WheelRight::vd_manager.slide_right()
 
+^Left:: vd_manager.slide_left()
+^Right::vd_manager.slide_right()
+
 ; Gesture
 RButton::
     MIN_DIS := 145
