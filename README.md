@@ -1,6 +1,7 @@
 # Scripts
 
 ## Windows Terminal
+
 ![terminal](/images/wt.png)
 
 ## WSL2
@@ -17,7 +18,10 @@ plugins=( [plugins...] zsh-syntax-highlighting)
 
 ## AutoHotkey
 
-- [x] Virtual desktops
+- [x] Switch virtual desktops.
+- [x] Control volume.
+- [x] Google the selection.
+- [x] Copy the file path.
 
 ### Run on startup
 
