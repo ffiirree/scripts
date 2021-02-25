@@ -238,7 +238,7 @@ RButton::
     else {
         SendInput, {RButton}
     }
-Return
+return
 
 ;====================================================================o
 ;                                                                    ;
@@ -259,21 +259,15 @@ Return
 ; Volume                                                             ;
 ;                                                                    ;
 ;====================================================================o
-~WheelUp::
-    MouseGetPos, , , current_win_id
-    WinGet, tray_id, ID, ahk_class Shell_TrayWnd
-    if(current_win_id = tray_id) {
-        Send {Volume_Up}
-    }
-Return
+#If MouseIsOver("ahk_class Shell_TrayWnd")
+~WheelUp::Volume_Up
+~WheelDown::Volume_Down
 
-~WheelDown::
-    MouseGetPos, , , current_win_id
-    WinGet, tray_id, ID, ahk_class Shell_TrayWnd
-    if(current_win_id = tray_id) {
-        Send {Volume_Down}
-    }
-Return
+MouseIsOver(title) {
+    MouseGetPos, , , win_id
+    return WinExist(title . " ahk_id " . win_id)
+}
+#If
 
 ^Up::Volume_Up
 ^Down::Volume_Down
