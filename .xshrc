@@ -22,3 +22,7 @@ alias ssh249='ssh -p 34991 zhliangqi@222.20.95.224'
 [ ! -L /home/$(whoami)/desktop ]    && ln -s /mnt/c/Users/$WIN_USER/Desktop/    ~/desktop
 [ ! -L /home/$(whoami)/download ]   && ln -s /mnt/c/Users/$WIN_USER/Downloads/  ~/download
 [ ! -L /home/$(whoami)/code ]       && ln -s /mnt/d/Code                        ~/code
+
+# bat
+export BAT_THEME="TwoDark"
+export BAT_STYLE="changes"
