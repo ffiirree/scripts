@@ -17,7 +17,7 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
 # .zshrc
-plugins=( [plugins...] zsh-syntax-highlighting zsh-autosuggestions)
+plugins=(git z extract zsh-syntax-highlighting zsh-autosuggestions)
 ```
 
 ### use .xshrc
@@ -25,6 +25,12 @@ plugins=( [plugins...] zsh-syntax-highlighting zsh-autosuggestions)
 ```bash
 cat .xshrc >> .zshrc
 ```
+
+- [x] WIN_IP: windows host ip adderss.
+- [x] WSL_IP: WSL2 ip adderss.
+- [x] alias: code -> Visual Stuido Code in windows.
+- [x] Symbolic links: desktop -> Windows Desktop / download -> Windows Download
+- [x] bat configuration.
 
 ## AutoHotkey
 Keys | Actions
