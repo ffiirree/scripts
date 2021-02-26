@@ -26,11 +26,11 @@ plugins=(git z extract zsh-syntax-highlighting zsh-autosuggestions)
 cat .xshrc >> .zshrc
 ```
 
-- [x] WIN_IP: windows host ip adderss.
-- [x] WSL_IP: WSL2 ip adderss.
-- [x] alias: code -> Visual Stuido Code in windows.
-- [x] Symbolic links: desktop -> Windows Desktop / download -> Windows Download
-- [x] bat configuration.
+- [x] `WIN_IP`: windows host ip adderss.
+- [x] `WSL_IP`: WSL2 ip adderss.
+- [x] `alias`: code -> Visual Stuido Code in windows.
+- [x] `Symbolic links`: desktop -> Windows Desktop / download -> Windows Download
+- [x] `bat` configuration.
 
 ## AutoHotkey
 Keys | Actions
