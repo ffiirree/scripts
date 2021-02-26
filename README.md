@@ -35,18 +35,19 @@ cat .xshrc >> .zshrc
 ## AutoHotkey
 Keys | Actions
 :-:|---
-`Win` + `1`, `2`, ...|**Switch** to virtual desktop **1, 2, etc**.
+`Win` + `1`, `2`, ...       | **Switch** to virtual desktop **1, 2, etc**.
 `Ctrl` + `WheelLeft` / `WheelRight`   | **Switch** to the virtual desktop on the **left / right**.
 `RButton` slides left  / right   | **Switch** to the virtual desktop on the **left / right**.
-`Ctrl` + `Left`  / `Right`   | **Switch** to the virtual desktop on the **left / right**.
-`RButton` slides up     | **Show task view**.
-`RButton` slides down   | **Show desktop**.
-`Ctrl` + `Alt` + `T`    | **Run** windows terminal.
-`LButton` + `RButton`   | `AltTab`.
-`Ctrl` + `Up` / `Down`  | **Volume Up / Down**.
+`Ctrl` + `Left`  / `Right`  | **Switch** to the virtual desktop on the **left / right**.
+`RButton` slides up         | **Show task view**.
+`RButton` slides down       | **Show desktop**.
+`Ctrl` + `Alt` + `T`        | **Run** windows terminal.
+`LButton` + `RButton`       | `AltTab`.
+`Ctrl` + `Up` / `Down`      | **Volume Up / Down**.
 `WheelUp` / `WheelDown` when cursor is in the taskbar | **Volume Up / Down**.
-`Ctrl` + `G`            | `Google` the selection.
-`Ctrl` + `Alt` + `C`    | `Copy` the file path.
+`Ctrl` + `G`                | `Google` the selection.
+`Ctrl` + `Alt` + `C`        | `Copy` the file path.
+`Ctrl` + `Space`            | **Windows on top**.
 
 ### Run on startup
 
