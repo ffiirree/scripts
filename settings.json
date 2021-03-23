@@ -26,30 +26,10 @@
             "useAcrylic": true,
             "acrylicOpacity": 0.75,
             "cursorShape": "bar",
-            "fontFace": "Cascadia Code",
-            "fontSize": 10
+            "fontFace": "CodeNewRoman NF",
+            "fontSize": 11
         },
         "list": [
-            {
-                // Make changes here to the powershell.exe profile.
-                "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
-                "name": "Windows PowerShell",
-                "commandline": "powershell.exe",
-                "hidden": true
-            },
-            {
-                // Make changes here to the cmd.exe profile.
-                "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
-                "name": "CMD",
-                "commandline": "cmd.exe",
-                "hidden": false
-            },
-            {
-                "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
-                "hidden": true,
-                "name": "Azure Cloud Shell",
-                "source": "Windows.Terminal.Azure"
-            },
             {
                 "guid": "{07b52e3e-de2c-5db4-bd2d-ba144ed6c273}",
                 "hidden": false,
@@ -64,12 +44,59 @@
                 "name": "Git Bash",
                 "commandline": "C:/Program Files/Git/bin/bash.exe",
                 "icon": "D:/Code/scripts/icons/git.ico"
+            },
+            {
+                "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+                "hidden": false,
+                "commandline": "pwsh -nologo",
+                "name": "PowerShell",
+                "source": "Windows.Terminal.PowershellCore",
+                "colorScheme": "Chalk"
+            },
+            {
+                "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+                "name": "Windows PowerShell",
+                "commandline": "powershell.exe",
+                "hidden": true
+            },
+            {
+                "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+                "name": "CMD",
+                "commandline": "cmd.exe",
+                "hidden": false
+            },
+            {
+                "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
+                "hidden": true,
+                "name": "Azure Cloud Shell",
+                "source": "Windows.Terminal.Azure"
             }
         ]
     },
     // Add custom color schemes to this array.
     // To learn more about color schemes, visit https://aka.ms/terminal-color-schemes
     "schemes": [
+        {
+            "name": "Homebrew",
+            "black": "#000000",
+            "red": "#FC5275",
+            "green": "#00a600",
+            "yellow": "#999900",
+            "blue": "#6666e9",
+            "purple": "#b200b2",
+            "cyan": "#00a6b2",
+            "white": "#bfbfbf",
+            "brightBlack": "#666666",
+            "brightRed": "#e50000",
+            "brightGreen": "#00d900",
+            "brightYellow": "#e5e500",
+            "brightBlue": "#0000ff",
+            "brightPurple": "#e500e5",
+            "brightCyan": "#00e5e5",
+            "brightWhite": "#e5e5e5",
+            "background": "#283033",
+            "foreground": "#00ff00"
+        },
         {
             "name": "Desert",
             "black": "#4d4d4d",

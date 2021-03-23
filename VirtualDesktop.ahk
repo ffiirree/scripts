@@ -185,15 +185,15 @@ LWin & 7::vd_manager.slide(7)
 LWin & 8::vd_manager.slide(8)
 LWin & 9::vd_manager.slide(9)
 
-^WheelLeft:: vd_manager.slide_left()
-^WheelRight::vd_manager.slide_right()
+; ^WheelLeft:: vd_manager.slide_left()
+; ^WheelRight::vd_manager.slide_right()
 
 ^Left:: vd_manager.slide_left()
 ^Right::vd_manager.slide_right()
 
 ; Gesture
 RButton::
-    MIN_DIS := 145
+    MIN_DIS := 125
     
     MouseGetPos, x_s, y_s
     KeyWait, RButton, U

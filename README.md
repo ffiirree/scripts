@@ -33,6 +33,7 @@ cat .xshrc >> .zshrc
 - [x] `bat` configuration.
 
 ## AutoHotkey
+
 Keys | Actions
 :-:|---
 `Win` + `1`, `2`, ...       | **Switch** to virtual desktop **1, 2, etc**.
@@ -53,3 +54,15 @@ Keys | Actions
 
 1. `Win` + `R` and input `shell:startup`, then, `Enter`.
 2. Copy `.ahk` file to this folder.
+
+## PowerShell
+
+### download & install
+
+[Github : PowerShell](https://github.com/PowerShell/PowerShell)
+
+## Some fonts
+
+### download & install
+
+[Github : Nerd fonts](https://github.com/ryanoasis/nerd-fonts)
