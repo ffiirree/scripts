@@ -1,7 +1,4 @@
-###############################################################################################
-#                                          custom                                             #
-###############################################################################################
-
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> custom >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 # ip adderss
 export WIN_IP=$(cat /etc/resolv.conf | grep 'nameserver' | cut -f 2 -d ' ')
 export WSL_IP=$(ip addr show eth0 | grep 'inet ' | cut -f 6 -d ' ' | cut -f 1 -d '/')
@@ -26,3 +23,9 @@ alias ssh249='ssh -p 34991 zhliangqi@222.20.95.224'
 # bat
 export BAT_THEME="TwoDark"
 export BAT_STYLE="changes"
+
+# proxy
+export   ALL_PROXY="socks5://$WIN_IP:10808"
+export  HTTP_PROXY="http://$WIN_IP:10809"
+export HTTPS_PROXY=$HTTP_PROXY
+# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< custom <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<

@@ -31,6 +31,7 @@ cat .xshrc >> .zshrc
 - [x] `alias`: code -> Visual Stuido Code in windows.
 - [x] `Symbolic links`: desktop -> Windows Desktop / download -> Windows Download
 - [x] `bat` configuration.
+- [x] `proxy`: WSL2 proxy.
 
 ## AutoHotkey
 
