@@ -299,3 +299,19 @@ return
 ;                                                                    ;
 ;====================================================================o
 ^Space::Winset, Alwaysontop, , A
+
+;====================================================================o
+;                                                                    ;
+; Adobe Acrobat Pro DC:                                              ;
+;     mouse forward: Alt + ->                                        ;
+;     mouse back:    Alt + <-                                        ;
+;====================================================================o 
+#if IsActiveProcess("Acrobat.exe")
+IsActiveProcess(name) {
+    WinGet, _name, ProcessName, A
+    return name = _name
+}
+
+XButton1::Send !{Left}
+XButton2::Send !{Right}
+#if
