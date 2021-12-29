@@ -50,6 +50,7 @@ Keys | Actions
 `Ctrl` + `G`                | `Google` the selection.
 `Ctrl` + `Alt` + `C`        | `Copy` the file path.
 `Ctrl` + `Space`            | **Windows on top**.
+Mouse `Back`/`Forward`      | `Alt` + `Left`/`Right`(Adobe Acrobat PDF only)
 
 ### Run on startup
 
