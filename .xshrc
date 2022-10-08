@@ -9,12 +9,6 @@ export WIN_USER=$(powershell.exe '$env:UserName' | sed -e 's/\r//g')
 # echo WIN_IP: $WIN_IP
 # echo WSL_IP: $WSL_IP
 
-# Visual Studio Code(or add the VSCode path to 'PATH' in windows)
-# alias code="/mnt/c/Users/$WIN_USER/AppData/Local/Programs/Microsoft\ VS\ Code/bin/code"
-
-# server
-alias ssh249='ssh -p 34991 zhliangqi@222.20.95.224'
-
 # link to windows folders
 [ ! -L /home/$(whoami)/desktop ]    && ln -s /mnt/c/Users/$WIN_USER/Desktop/    ~/desktop
 [ ! -L /home/$(whoami)/download ]   && ln -s /mnt/c/Users/$WIN_USER/Downloads/  ~/download
