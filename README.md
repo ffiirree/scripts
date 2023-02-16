@@ -59,12 +59,43 @@ Mouse `Back`/`Forward`      | `Alt` + `Left`/`Right`(Adobe Acrobat PDF only)
 
 ## PowerShell
 
-### download & install
+### Download & Install
 
 [Github : PowerShell](https://github.com/PowerShell/PowerShell)
 
+### Install Oh-My-Push
+
+```sh
+winget install JanDeDobbeleer.OhMyPosh -s winget
+```
+
+#### Theme
+
+```sh
+code $PROFILE
+
+# Add to the profile
+oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\ys.omp.json" | Invoke-Expression
+```
+
+### PSReadLine
+
+```sh
+Install-Module -Name PSReadLine -AllowClobber -Force
+
+# Add to $PROFILE
+# Predictive IntelliSense
+Set-PSReadLineOption -PredictionSource History
+# Enable Predictive IntelliSense
+Set-PSReadLineOption -PredictionSource None
+
+# Custom Key Bindings
+Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
+Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
+```
+
 ## Some fonts
 
-### download & install
+### Download & Install
 
 [Github : Nerd fonts](https://github.com/ryanoasis/nerd-fonts)
