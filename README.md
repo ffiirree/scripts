@@ -84,9 +84,9 @@ oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\ys.omp.json" | Invoke-Expre
 Install-Module -Name PSReadLine -AllowClobber -Force
 
 # Add to $PROFILE
-# Predictive IntelliSense
-Set-PSReadLineOption -PredictionSource History
 # Enable Predictive IntelliSense
+Set-PSReadLineOption -PredictionSource History
+# Disable Predictive IntelliSense
 Set-PSReadLineOption -PredictionSource None
 
 # Custom Key Bindings
