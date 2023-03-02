@@ -78,7 +78,7 @@ code $PROFILE
 oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\ys.omp.json" | Invoke-Expression
 ```
 
-> If you have some garbled icon on your VS Code termimal with the theme, please install the font on your Windows OS and set the terminal's font on your VS Code setting.json file. Like:
+> If you have some garbled icons on your VS Code terminal with the theme, please install the font on your Windows OS and set the terminal's font in your VS Code "setting.json" file. Like:
 > 
 > "terminal.integrated.fontFamily": "CodeNewRoman NFM"
 
