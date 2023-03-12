@@ -100,6 +100,37 @@ Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
 
 ## Some fonts
 
-### Download & Install
-
 [Github : Nerd fonts](https://github.com/ryanoasis/nerd-fonts)
+
+## V2ray: `Websocket` + `TLS` + `Web`
+
+### Install and Configure V2ray
+
+```bash
+wget https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh
+chmod +x install-release.sh
+sudo ./install-release.sh
+
+wget https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-dat-release.sh
+chmod +x install-dat-release.sh
+sudo ./install-dat-release.sh
+
+sudo systemctl enable v2ray
+sudo systemctl start v2ray
+```
+
+### Generate Certificate for TLS
+
+1. Register a domain
+2. Generate Certificate
+
+```bash
+curl https://get.acme.sh | sh -s email=<YOUR_EMAIL>
+/root/.acme.sh/acme.sh  --issue -d <YOUR_DOMAIN_NAME> --standalone
+```
+
+### Install and Configure NGINX
+
+```bash
+sudo apt install nginx
+```
