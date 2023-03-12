@@ -98,8 +98,22 @@
             {
                 "type": "field",
                 "domain": [
-                    "geosite:cn"
+                    "geosite:category-ads-all"
                 ],
+                "outboundTag": "block"
+            },
+            {
+                "type": "field",
+                "domain": [
+                    "geosite:cn",
+                    "geosite:microsoft",
+                    "geosite:apple",
+                    "geosite:adobe"
+                ],
+                "outboundTag": "direct"
+            },
+            {
+                "type": "field",
                 "ip": [
                     "geoip:cn",
                     "geoip:private"
