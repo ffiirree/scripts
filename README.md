@@ -93,6 +93,8 @@ Set-PSReadLineOption -PredictionSource History
 # Disable Predictive IntelliSense
 Set-PSReadLineOption -PredictionSource None
 
+Set-PSReadLineOption -HistorySearchCursorMovesToEnd
+
 # Custom Key Bindings
 Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
