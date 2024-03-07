@@ -83,7 +83,7 @@ RButton:: {
 ; Volume                                                             ;
 ;                                                                    ;
 ;====================================================================o
-#HotIf MouseIsOver("ahk_class Shell_TrayWnd")
+#HotIf MouseIsOver("ahk_class Shell_TrayWnd") or MouseIsOver("ahk_class Shell_SecondaryTrayWnd")
 ~WheelUp::Volume_Up
 ~WheelDown::Volume_Down
 
