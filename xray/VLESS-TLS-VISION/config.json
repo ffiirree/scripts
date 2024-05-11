@@ -57,9 +57,9 @@
             "settings": {}
         },
         {
+            "tag": "blocked",
             "protocol": "blackhole",
-            "settings": {},
-            "tag": "blocked"
+            "settings": {}
         }
     ],
     "routing": {
@@ -70,6 +70,13 @@
                 "ip": [
                     "geoip:cn",
                     "geoip:private"
+                ],
+                "outboundTag": "blocked"
+            },
+            {
+                "type": "field",
+                "protocol": [
+                    "bittorrent"
                 ],
                 "outboundTag": "blocked"
             }
